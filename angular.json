@@ -19,12 +19,18 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/stylings"
+              ]
+            },
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -88,7 +94,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }
@@ -120,5 +127,14 @@
         }
       }
     }},
-  "defaultProject": "bwmNew"
+  "defaultProject": "bwmNew",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "bwm",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "bwm"
+    }
+  }
 }
