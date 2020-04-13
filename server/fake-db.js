@@ -1,6 +1,6 @@
 const Rental = require('./models/rental');
 
-class fakeDb {
+class FakeDb {
     constructor() {
         this.rentals = [{
             title: "Nice view on ocean",
@@ -42,7 +42,7 @@ class fakeDb {
     }
 
     pushRentalsToDb() {
-        this.rentals.forEach((rental)=> {
+        this.rentals.forEach((rental) => {
             const newRental = new Rental(rental);
 
             newRental.save();
@@ -55,4 +55,4 @@ class fakeDb {
     }
 }
 
-module.exports = fakeDb;
+module.exports = FakeDb;
