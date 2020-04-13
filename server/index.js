@@ -1,9 +1,9 @@
-const express       = require('express'),
-      mongoose      = require('mongoose'),
-      config        = require('./config/dev'),
-      Rental        = require('./models/rental'),
-      FakeDb        = require('./fake-db'),
-      rentalRoutes  = require('./models/rental');
+const express       = require('express');
+const mongoose      = require('mongoose');
+const config        = require('./config/dev');
+const Rental        = require('./models/rental');
+const FakeDb        = require('./fake-db');
+const rentalRoutes  = require('./routes/rentals');
 
 
     mongoose.set("useUnifiedTopology", true);
