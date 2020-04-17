@@ -127,7 +127,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "bwmNew",
   "schematics": {
     "@schematics/angular:component": {
@@ -137,6 +138,9 @@
     },
     "@schematics/angular:directive": {
       "prefix": "bwm"
+    },
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
     }
   }
 }
