@@ -127,15 +127,20 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "bwmNew",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "bwm",
-      "styleext": "scss"
+      "styleext": "scss",
+      "skipTests": true
     },
     "@schematics/angular:directive": {
       "prefix": "bwm"
+    },
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
     }
   }
 }
