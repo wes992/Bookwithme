@@ -1,63 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { MapService } from './map.service';
 
 @Component({
   selector: 'bwm-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
+export class MapComponent {
+
+  @Input() location: string;
+  isPositionError: boolean = false;
+
+  lat: number;
+  lng: number;
+  
+  constructor(private mapService: MapService,
+              private ref: ChangeDetectorRef) { }
 
 
+  mapReadyHandler() {
+    // let currentLocation = this.location;
 
-export class MapComponent implements OnInit {
+    // if (Math.round(Math.random() * 10) > 5 ) { 
+    //   currentLocation = 'f5ww54t5sy5sy';
+    // }
 
-  zoom = 12
-  center: google.maps.LatLngLiteral
-  options: google.maps.MapOptions = {
-    zoomControl: false,
-    scrollwheel: true,
-    disableDoubleClickZoom: true,
-    maxZoom: 13,
-    minZoom: 8,
-  }
-  // addMarker() {
-  //   this.markers.push({
-  //     position: {
-  //       lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
-  //       lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
-  //     },
-  //     label: {
-  //       color: 'red',
-  //       text: 'Marker label ' + (this.markers.length + 1),
-  //     },
-  //     title: 'Marker title ' + (this.markers.length + 1),
-  //     options: { animation: google.maps.Animation.BOUNCE },
-  //   })
-  // }
+    this.mapService.getGeoLocation(this.location).subscribe(
+      (coordinates) => {
+        this.lat = coordinates.lat;
+        this.lng = coordinates.lng;
 
-
-  ngOnInit() {
-    // navigator.geolocation.getCurrentPosition(position => {
-      this.center = {
-
-        lat: 35.574340,
-        lng: -97.545930
-
-        // lat: position.coords.latitude,
-        // lng: position.coords.longitude
-      }
-    // })
+        this.ref.detectChanges();
+      }, () => {
+        this.lat = this.lng = 0
+        this.isPositionError = true;
+      });
   }
 }
-
-
-
-
-
-
-// export class MapComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-// }
