@@ -46,5 +46,5 @@ testem.log
 Thumbs.db
 
 /server/config/dev.js
-/src/environments
+/src/environments/environment.ts
 
