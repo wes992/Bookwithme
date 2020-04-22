@@ -17,13 +17,7 @@ export class MapComponent {
   constructor(private mapService: MapService,
               private ref: ChangeDetectorRef) { }
 
-
   mapReadyHandler() {
-    // let currentLocation = this.location;
-
-    // if (Math.round(Math.random() * 10) > 5 ) { 
-    //   currentLocation = 'f5ww54t5sy5sy';
-    // }
 
     this.mapService.getGeoLocation(this.location).subscribe(
       (coordinates) => {
