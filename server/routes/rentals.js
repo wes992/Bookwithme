@@ -1,6 +1,7 @@
 const   express = require('express');
 const   router  = express.Router();
 const   Rental  = require('../models/rental');
+const   userC   = require('../controllers/user');
         
 router.get('', function(req,res) {
     Rental.find({}, function(err,foundRentals) {
@@ -16,6 +17,10 @@ router.get('/:id', function(req,res) {
         }
             res.json(foundRental);
     });
+});
+
+router.get('/secret', userC.authMiddleware, function(req,res) {
+    res.json({"secret": true})
 });
 
 module.exports = router;
