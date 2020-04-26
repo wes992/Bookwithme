@@ -46,4 +46,5 @@ testem.log
 Thumbs.db
 
 /server/config/dev.js
-src\environments\environment.ts
+.vscode/
+src/environments/environment.ts
