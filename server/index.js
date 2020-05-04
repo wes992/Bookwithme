@@ -16,7 +16,7 @@ const userRoutes  = require('./routes/users');
     }).then(() => {
         console.log("Successfully connected to DB!");
         const fakeDb = new FakeDb();
-        fakeDb.seedDb();
+        // fakeDb.seedDb();
     }).catch(err => {
         console.log("ERROR:", err.message);
     });
