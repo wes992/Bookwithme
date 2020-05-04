@@ -27,7 +27,9 @@ const userSchema  = new Schema({
         min: [4, 'password must be between 4 & 32 characters'],
         required: 'Password is Required'
     },
-    rentals: [{type: Schema.Types.ObjectId, ref: 'Rental'}]
+    rentals:    [{type: Schema.Types.ObjectId, ref: 'Rental'}],
+    bookings:   [{ type: Schema.Types.ObjectId, ref: 'Booking' }]
+
 });
 
 userSchema.methods.isSamePassword = function(requestedPassword) {
