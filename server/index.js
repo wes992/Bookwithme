@@ -5,8 +5,9 @@ const config        = require('./config/dev');
 // const Rental        = require('./models/rental');
 const FakeDb        = require('./fake-db');
 
-const rentalRoutes  = require('./routes/rentals');
-const userRoutes  = require('./routes/users');
+const rentalRoutes   = require('./routes/rentals'),
+      userRoutes     = require('./routes/users'),
+      bookingRoutes  = require('./routes/bookings');
 
 
     mongoose.set("useUnifiedTopology", true);
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 
 app.use('/api/v1/rentals', rentalRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/bookings', bookingRoutes);
 
 
 
