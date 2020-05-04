@@ -7,7 +7,7 @@ exports.auth = function(req,res) {
     const {email, password} = req.body;
 
     if(!password || !email) {
-        return res.status(422).send({errors: [{title: 'Data is Missing!', details: 'Please provide email and password'}]});
+        return res.status(422).send({errors: [{title: 'Data is Missing!', detail: 'Please provide email and password'}]});
      }
 
      User.findOne({email}, function(err, user) {
@@ -34,10 +34,10 @@ exports.register = function(req,res) {
     const {username, email, password, passwordConfirmation} = req.body;
 
     if(!password || !email) {
-       return res.status(422).send({errors: [{title: 'Data is Missing!', details: 'Please provide email and password'}]});
+       return res.status(422).send({errors: [{title: 'Data is Missing!', detail: 'Please provide email and password'}]});
     }
     if(password != passwordConfirmation) {
-        return res.status(422).send({errors: [{title: 'Invalid password', details: 'Please provide matching passwords'}]});
+        return res.status(422).send({errors: [{title: 'Invalid password', detail: 'Please provide matching passwords'}]});
     }
 
     User.findOne({email}, function(err,existingUser) {
@@ -46,7 +46,7 @@ exports.register = function(req,res) {
         }
 
         if(existingUser) { 
-            return res.status(422).send({errors: [{title: 'Invalid email', details: 'A user with that email already exists'}]});
+            return res.status(422).send({errors: [{title: 'Invalid email', detail: 'A user with that email already exists'}]});
         }
 
         const user = new User({
@@ -93,5 +93,5 @@ function parseToken(token) {
 }
 
 function notAuthorized(res) {
-    return res.status(401).send({errors: [{title: 'Not Authorized', details: 'You need to login to do that...'}]});
+    return res.status(401).send({errors: [{title: 'Not Authorized', detail: 'You need to login to do that...'}]});
 }

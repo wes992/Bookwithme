@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../auth/shared/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,5 +9,17 @@ import { Component } from '@angular/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    
+  constructor(public auth: AuthService,
+              private router: Router) {}
+  
+  
+  logout(){
+    this.auth.logout();
+
+    this.router.navigate(['/login']);
+  }
+    // collapsed = true;
+    // toggleCollapsed(): void {
+    //   this.collapsed = !this.collapsed;
+    // }
 }

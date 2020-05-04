@@ -6,7 +6,7 @@
     "bwmNew": {
       "projectType": "application",
       "schematics": {
-        "style" : "scss"
+        "styleext" : "scss"
       },
       "root": "",
       "sourceRoot": "src",
@@ -33,9 +33,12 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/font-awesome/css/font-awesome.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              // "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
