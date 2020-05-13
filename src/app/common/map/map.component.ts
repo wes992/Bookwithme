@@ -13,6 +13,7 @@ export class MapComponent {
 
   lat: number;
   lng: number;
+
   
   constructor(private mapService: MapService,
               private ref: ChangeDetectorRef) { }
