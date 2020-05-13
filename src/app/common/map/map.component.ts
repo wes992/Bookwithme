@@ -29,6 +29,7 @@ export class MapComponent {
       }, () => {
         this.lat = this.lng = 0
         this.isPositionError = true;
+        this.ref.detectChanges();
       });
   }
 }
