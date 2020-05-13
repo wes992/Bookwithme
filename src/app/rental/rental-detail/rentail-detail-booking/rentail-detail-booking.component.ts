@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Booking } from 'src/app/booking/shared/booking.model';
+import { HelperService } from '../../../common/service/helper.service';
 
 @Component({
   selector: 'bwm-rentail-detail-booking',
@@ -8,12 +10,33 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RentailDetailBookingComponent implements OnInit {
  
   @Input() price: number;
+  @Input() bookings: Booking[];
 
   daterange: any = {};
+  bookedDates: any[] = [];
 
-  constructor() { }
+  options: any = {
+    alwaysShowCalendars: false,
+    datesDisabled: this.checkForInvalidDates,
+  }
+
+  constructor(public helper: HelperService) { }
   
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getBookedOutDates();
+  }
+
+  private checkForInvalidDates(date) {
+    return true;
+  }
+
+  private getBookedOutDates() {
+    if (this.bookings && this.bookings.length > 0) {
+      this.bookings.forEach((booking: Booking) => {
+        const dateRange = this.helper.getDateRange(booking.startAt, booking.endAt);
+        this.bookedDates.push(...dateRange);
+      });
+    }
   }
   
 //   // see original project for full list of options
