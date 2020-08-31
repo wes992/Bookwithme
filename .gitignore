@@ -48,3 +48,4 @@ Thumbs.db
 /server/config/dev.js
 .vscode/
 src/environments/environment.ts
+/server/config/prod.js
